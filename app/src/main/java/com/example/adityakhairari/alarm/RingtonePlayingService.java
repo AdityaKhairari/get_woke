@@ -113,36 +113,44 @@ public class RingtonePlayingService extends Service {
 
                 if (spinNum == 1) {
                     media_song = MediaPlayer.create(this, R.raw.bright_idea);
+                    media_song.setLooping(true);
                     media_song.start();
                 }
                 else if (spinNum == 2) {
-                    // create an instance of the media player
+
                     media_song = MediaPlayer.create(this, R.raw.christmas);
-                    // start the ringtone
+                    media_song.setLooping(true);
+
                     media_song.start();
                 }
                 else if (spinNum == 3) {
                     media_song = MediaPlayer.create(this, R.raw.computer_bounce);
+                    media_song.setLooping(true);
                     media_song.start();
                 }
                 else if (spinNum == 4) {
                     media_song = MediaPlayer.create(this, R.raw.holiday);
+                    media_song.setLooping(true);
                     media_song.start();
                 }
                 else if (spinNum == 5) {
                     media_song = MediaPlayer.create(this, R.raw.marimba1);
+                    media_song.setLooping(true);
                     media_song.start();
                 }
                 else if (spinNum == 6) {
                     media_song = MediaPlayer.create(this, R.raw.marimba2);
+                    media_song.setLooping(true);
                     media_song.start();
                 }
                 else if (spinNum == 7) {
                     media_song = MediaPlayer.create(this, R.raw.work_hard);
+                    media_song.setLooping(true);
                     media_song.start();
                 }
                 else {
                     media_song = MediaPlayer.create(this, R.raw.marimba1);
+                    media_song.setLooping(true);
                     media_song.start();
                 }
 
@@ -150,34 +158,42 @@ public class RingtonePlayingService extends Service {
             }
             else if (ringtonechosen == 1) {
                 media_song = MediaPlayer.create(this, R.raw.bright_idea);
+                media_song.setLooping(true);
                 media_song.start();
             }
             else if (ringtonechosen == 2) {
                 media_song = MediaPlayer.create(this, R.raw.christmas);
+                media_song.setLooping(true);
                 media_song.start();
             }
             else if (ringtonechosen == 3) {
                 media_song = MediaPlayer.create(this, R.raw.computer_bounce);
+                media_song.setLooping(true);
                 media_song.start();
             }
             else if (ringtonechosen == 4) {
                 media_song = MediaPlayer.create(this, R.raw.holiday);
+                media_song.setLooping(true);
                 media_song.start();
             }
             else if (ringtonechosen == 5) {
                 media_song = MediaPlayer.create(this, R.raw.marimba1);
+                media_song.setLooping(true);
                 media_song.start();
             }
             else if (ringtonechosen == 6) {
                 media_song = MediaPlayer.create(this, R.raw.marimba2);
+                media_song.setLooping(true);
                 media_song.start();
             }
             else if (ringtonechosen == 7) {
                 media_song = MediaPlayer.create(this, R.raw.work_hard);
+                media_song.setLooping(true);
                 media_song.start();
             }
             else {
                 media_song = MediaPlayer.create(this, R.raw.marimba1);
+                media_song.setLooping(true);
                 media_song.start();
             }
 
