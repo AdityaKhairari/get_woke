@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     int alarmSound;
 
+    boolean setbool;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -103,27 +105,35 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             @Override
             public void onClick(View v) {
 
+                if (setbool) {
+                    // changing alarm indicator to off
+                    updateIndicator("Alarm off!");
 
-                // changing alarm indicator to off
-                updateIndicator("Alarm off!");
+                    // cancel the pending intent for alarm
+                    alarm_manager.cancel(pending_intent);
 
-                // cancel the pending intent for alarm
-                alarm_manager.cancel(pending_intent);
+                    // put extra string into my_intent
+                    // tells the clock that you pressed the "alarm off" button
+                    my_intent.putExtra("extra", "alarm off");
 
-                // put extra string into my_intent
-                // tells the clock that you pressed the "alarm off" button
-                my_intent.putExtra("extra", "alarm off");
-
-                // also put an extra int into the alarm off section
-                // to prevent crashes in a Null Pointer Exception
-                my_intent.putExtra("whale_choice", alarmSound);
+                    // also put an extra int into the alarm off section
+                    // to prevent crashes in a Null Pointer Exception
+                    my_intent.putExtra("whale_choice", alarmSound);
 
 
-                // stop the ringtone
-                //sendBroadcast(my_intent);
+                    // stop the ringtone
+                    //sendBroadcast(my_intent);
 
-                Intent intent = new Intent (MainActivity.this, SecondActivity.class);
-                startActivity(intent);
+                    Intent intent = new Intent (MainActivity.this, SecondActivity.class);
+                    startActivity(intent);
+
+                    setbool = false;
+                } else {
+                    Toast.makeText(context, "Please set the alarm first", Toast.LENGTH_SHORT).show();
+                }
+
+
+
 
 
             }
@@ -140,30 +150,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     }
 
-//    private void snooze() {
 //
-//        final Intent my_intent = new Intent(this.context, Alarm_Receiver.class);
-//
-//        // changing alarm indicator to off
-//        updateIndicator("Alarm off!");
-//
-//        if (music) {
-//            //cancel the pending intent for alarm
-//            alarm_manager.cancel(pending_intent);
-//
-//            //put extra string into my_intent
-//            //tells the clock that you pressed the "alarm off" button
-//            my_intent.putExtra("extra", "alarm off");
-//
-//            //also put an extra int into the alarm off section
-//            //to prevent crashes in a Null Pointer Exception
-//            my_intent.putExtra("whale_choice", alarmSound);
-//
-//
-//            //stop the ringtone
-//            sendBroadcast(my_intent);
-//        }
-//    }
 
     private void updateIndicator(String str) {
         update_text.setText(str);
@@ -194,6 +181,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        setbool = true;
         TextView alarmTime = (TextView) findViewById(R.id.alarmtime);
         if (DateFormat.is24HourFormat(this)) {
             if (hourOfDay < 12) {
