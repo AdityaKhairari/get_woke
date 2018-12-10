@@ -1,5 +1,6 @@
 package com.example.adityakhairari.alarm;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Context;
@@ -61,7 +62,8 @@ public class ThirdActivity extends AppCompatActivity implements SensorEventListe
             counter--;
             tv_steps.setText(String.valueOf(counter));
             if (counter <= 0) {
-                finish();
+                Intent fourthintent = new Intent (ThirdActivity.this, MainActivity.class);
+                startActivity(fourthintent);
             }
         }
     }

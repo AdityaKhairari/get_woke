@@ -50,7 +50,8 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (a.getText().equals(correctAnswer)) {
                     question.setText("CORRECT");
-                    finish();
+                    Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
+                    startActivity(thirdintent);
 
                 } else {
                     question.setText("WRONG");
@@ -65,7 +66,8 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (b.getText().equals(correctAnswer)) {
                     question.setText("CORRECT");
-                    finish();
+                    Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
+                    startActivity(thirdintent);
 
                 } else {
                     question.setText("WRONG");
@@ -79,7 +81,8 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (c.getText().equals(correctAnswer)) {
                     question.setText("CORRECT");
-                    finish();
+                    Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
+                    startActivity(thirdintent);
 
                 } else {
                     question.setText("WRONG");
@@ -93,7 +96,8 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (d.getText().equals(correctAnswer)) {
                     question.setText("CORRECT");
-                    finish();
+                    Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
+                    startActivity(thirdintent);
 
                 } else {
                     question.setText("WRONG");
