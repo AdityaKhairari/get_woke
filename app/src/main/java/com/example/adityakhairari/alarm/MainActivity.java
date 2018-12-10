@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
                     setbool = false;
 
-                    if ((curhour == hr && curmin >= min) || (curhour > hr && curmin <= ((min + 15) % 60))) {
+                    if ((curhour == hr && curmin >= min) || (curhour == hr + 1 && curmin <= ((min + 15) % 60))) {
                         Intent intent = new Intent (MainActivity.this, SecondActivity.class);
                         startActivity(intent);
                     }
