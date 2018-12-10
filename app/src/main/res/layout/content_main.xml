@@ -17,6 +17,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="40dp"
         android:layout_marginTop="200dp"
+        android:layout_marginEnd="34dp"
+        android:layout_toStartOf="@+id/snooze"
         android:background="@drawable/mybutton"
         android:clickable="true"
         android:focusable="true"
@@ -34,16 +36,28 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="199dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/mybutton"
         android:clickable="true"
         android:focusable="true"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:text="Snooze"
+        android:text="Disable"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/update_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:text="Alarm on/off Indicator"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -57,18 +71,6 @@
         android:text="Alarm Time"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="50sp" />
-
-    <TextView
-        android:id="@+id/update_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="100dp"
-        android:text="Alarm on/off Indicator"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="25sp"
-        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/ringtone_picker"
