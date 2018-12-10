@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "278791279075",
+    "firebase_url": "https://getwokequizes.firebaseio.com",
+    "project_id": "getwokequizes",
+    "storage_bucket": "getwokequizes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278791279075:android:869b6685f1b7dad8",
+        "android_client_info": {
+          "package_name": "com.example.adityakhairari.alarm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278791279075-ataf6klcfrg74qvqvn4fvd9kned19sgt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.adityakhairari.alarm",
+            "certificate_hash": "d8a2fef131acf2fcbd12ffd6625cf78ed0ea673b"
+          }
+        },
+        {
+          "client_id": "278791279075-vvv4nshuf0el1o662tn368n2u6n9c1cc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFq_CWYe-aW46RQ3YV4Noma01fbTdZKfA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278791279075-vvv4nshuf0el1o662tn368n2u6n9c1cc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278791279075:android:90de73c9c83629af",
+        "android_client_info": {
+          "package_name": "com.example.peterchien.getwokequizes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278791279075-1in3q5hjdnfk8llhki9jfm42cecgplh3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.peterchien.getwokequizes",
+            "certificate_hash": "d8a2fef131acf2fcbd12ffd6625cf78ed0ea673b"
+          }
+        },
+        {
+          "client_id": "278791279075-vvv4nshuf0el1o662tn368n2u6n9c1cc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFq_CWYe-aW46RQ3YV4Noma01fbTdZKfA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278791279075-vvv4nshuf0el1o662tn368n2u6n9c1cc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
