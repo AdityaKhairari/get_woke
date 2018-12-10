@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
                     setbool = false;
 
-                    if (curhour == hr && curmin >= min) {
+                    if ((curhour == hr && curmin >= min) || (curhour > hr && curmin <= ((min + 15) % 60))) {
                         Intent intent = new Intent (MainActivity.this, SecondActivity.class);
                         startActivity(intent);
                     }
@@ -250,6 +250,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
         calendar.set(Calendar.MINUTE, minute);
+
 
         // create an intent to the Alarm Receiver class
         final Intent my_intent = new Intent(this.context, Alarm_Receiver.class);
