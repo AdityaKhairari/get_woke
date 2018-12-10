@@ -96,29 +96,37 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         // create an onClick listener to stop the alarm or undo an alarm set
 
         alarm_off.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+//                // changing alarm indicator to off
+//                updateIndicator("Alarm off!");
+//
+//                // cancel the pending intent for alarm
+//                alarm_manager.cancel(pending_intent);
+//
+//                // put extra string into my_intent
+//                // tells the clock that you pressed the "alarm off" button
+//                my_intent.putExtra("extra", "alarm off");
+//
+//                // also put an extra int into the alarm off section
+//                // to prevent crashes in a Null Pointer Exception
+//                my_intent.putExtra("whale_choice", alarmSound);
+//
+//
+//                // stop the ringtone
+//                sendBroadcast(my_intent);
 
-                // changing alarm indicator to off
-                updateIndicator("Alarm off!");
-
-                // cancel the pending intent for alarm
-                alarm_manager.cancel(pending_intent);
-
-                // put extra string into my_intent
-                // tells the clock that you pressed the "alarm off" button
-                my_intent.putExtra("extra", "alarm off");
-
-                // also put an extra int into the alarm off section
-                // to prevent crashes in a Null Pointer Exception
-                my_intent.putExtra("whale_choice", alarmSound);
-
-
-                // stop the ringtone
-                sendBroadcast(my_intent);
-
+                Intent intent = new Intent (MainActivity.this, SecondActivity.class);
+                startActivity(intent);
 
             }
+
+
+
+
+
+
         });
     }
 

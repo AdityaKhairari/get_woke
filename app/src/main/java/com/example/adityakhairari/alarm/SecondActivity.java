@@ -1,5 +1,7 @@
 package com.example.adityakhairari.alarm;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,7 +34,7 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_second);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference();
@@ -48,9 +50,13 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (a.getText().equals(correctAnswer)) {
                     question.setText("CORRECT");
+                    finish();
+
                 } else {
                     question.setText("WRONG");
                     //myRef.child("update").setValue(!bool);
+                    Intent secIntent = new Intent (SecondActivity.this, ThirdActivity.class);
+                    startActivity(secIntent);
                 }
             }
         });
@@ -59,8 +65,12 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (b.getText().equals(correctAnswer)) {
                     question.setText("CORRECT");
+                    finish();
+
                 } else {
                     question.setText("WRONG");
+                    Intent secIntent = new Intent (SecondActivity.this, ThirdActivity.class);
+                    startActivity(secIntent);
                 }
             }
         });
@@ -69,8 +79,12 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (c.getText().equals(correctAnswer)) {
                     question.setText("CORRECT");
+                    finish();
+
                 } else {
                     question.setText("WRONG");
+                    Intent secIntent = new Intent (SecondActivity.this, ThirdActivity.class);
+                    startActivity(secIntent);
                 }
             }
         });
@@ -79,8 +93,12 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (d.getText().equals(correctAnswer)) {
                     question.setText("CORRECT");
+                    finish();
+
                 } else {
                     question.setText("WRONG");
+                    Intent secIntent = new Intent (SecondActivity.this, ThirdActivity.class);
+                    startActivity(secIntent);
                 }
             }
         });
