@@ -1,6 +1,7 @@
 package com.example.adityakhairari.alarm;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,9 @@ import java.util.List;
 import java.util.Random;
 
 public class SecondActivity extends AppCompatActivity {
+
+    Context context;
+
     private TextView question;
     private Button a;
     private Button b;
@@ -31,10 +35,13 @@ public class SecondActivity extends AppCompatActivity {
     private int numberOfQuestions = 5;
     private  boolean bool = true;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
+        this.context = this;
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference();
@@ -46,10 +53,18 @@ public class SecondActivity extends AppCompatActivity {
         d = (Button) findViewById(R.id.btnd);
 
         a.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
                 if (a.getText().equals(correctAnswer)) {
                     question.setText("CORRECT");
+
+                    final Intent my_intent = new Intent(context, Alarm_Receiver.class);
+                    my_intent.putExtra("extra", "alarm off");
+                    my_intent.putExtra("whale_choice", 2);
+                    sendBroadcast(my_intent);
+
                     Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
                     startActivity(thirdintent);
 
@@ -66,6 +81,12 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (b.getText().equals(correctAnswer)) {
                     question.setText("CORRECT");
+
+                    final Intent my_intent = new Intent(context, Alarm_Receiver.class);
+                    my_intent.putExtra("extra", "alarm off");
+                    my_intent.putExtra("whale_choice", 2);
+                    sendBroadcast(my_intent);
+
                     Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
                     startActivity(thirdintent);
 
@@ -81,6 +102,12 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (c.getText().equals(correctAnswer)) {
                     question.setText("CORRECT");
+
+                    final Intent my_intent = new Intent(context, Alarm_Receiver.class);
+                    my_intent.putExtra("extra", "alarm off");
+                    my_intent.putExtra("whale_choice", 2);
+                    sendBroadcast(my_intent);
+
                     Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
                     startActivity(thirdintent);
 
@@ -96,6 +123,12 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (d.getText().equals(correctAnswer)) {
                     question.setText("CORRECT");
+
+                    final Intent my_intent = new Intent(context, Alarm_Receiver.class);
+                    my_intent.putExtra("extra", "alarm off");
+                    my_intent.putExtra("whale_choice", 2);
+                    sendBroadcast(my_intent);
+
                     Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
                     startActivity(thirdintent);
 

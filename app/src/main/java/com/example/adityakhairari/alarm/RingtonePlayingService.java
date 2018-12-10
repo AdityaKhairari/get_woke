@@ -19,7 +19,7 @@ public class RingtonePlayingService extends Service {
 
     MediaPlayer media_song;
     int startId;
-    boolean isRunning;
+    public boolean isRunning;
     Context context;
 
 

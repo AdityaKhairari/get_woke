@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 public class ThirdActivity extends AppCompatActivity implements SensorEventListener {
 
+    Context context;
+
     TextView tv_steps;
 
     int x;
@@ -21,12 +23,14 @@ public class ThirdActivity extends AppCompatActivity implements SensorEventListe
 
     boolean running = false;
 
-    int counter = 11;
+    int counter = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third);
+
+        this.context = this;
 
         tv_steps = (TextView) findViewById(R.id.tv_steps);
 
@@ -62,6 +66,12 @@ public class ThirdActivity extends AppCompatActivity implements SensorEventListe
             counter--;
             tv_steps.setText(String.valueOf(counter));
             if (counter <= 0) {
+
+                final Intent my_intent = new Intent(this.context, Alarm_Receiver.class);
+                my_intent.putExtra("extra", "alarm off");
+                my_intent.putExtra("whale_choice", 2);
+                sendBroadcast(my_intent);
+
                 Intent fourthintent = new Intent (ThirdActivity.this, MainActivity.class);
                 startActivity(fourthintent);
             }

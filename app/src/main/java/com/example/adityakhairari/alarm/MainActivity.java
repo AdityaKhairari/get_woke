@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         this.context = this;
 
+
         // initialize the alarm_manager
         alarm_manager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         final Calendar calendar = Calendar.getInstance();
 
         // create intent for Alarm Receiver
-        //final Intent my_intent = new Intent(this.context, Alarm_Receiver.class);
+        final Intent my_intent = new Intent(this.context, Alarm_Receiver.class);
 
         // create spinner (dropdown) in the main UI
         Spinner spinner = (Spinner) findViewById(R.id.ringtone_picker);
@@ -90,6 +91,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
         });
 
+
+
         // initialize the stop button
         Button alarm_off = (Button) findViewById(R.id.snooze);
 
@@ -99,26 +102,29 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
             @Override
             public void onClick(View v) {
-//                // changing alarm indicator to off
-//                updateIndicator("Alarm off!");
-//
-//                // cancel the pending intent for alarm
-//                alarm_manager.cancel(pending_intent);
-//
-//                // put extra string into my_intent
-//                // tells the clock that you pressed the "alarm off" button
-//                my_intent.putExtra("extra", "alarm off");
-//
-//                // also put an extra int into the alarm off section
-//                // to prevent crashes in a Null Pointer Exception
-//                my_intent.putExtra("whale_choice", alarmSound);
-//
-//
-//                // stop the ringtone
-//                sendBroadcast(my_intent);
+
+
+                // changing alarm indicator to off
+                updateIndicator("Alarm off!");
+
+                // cancel the pending intent for alarm
+                alarm_manager.cancel(pending_intent);
+
+                // put extra string into my_intent
+                // tells the clock that you pressed the "alarm off" button
+                my_intent.putExtra("extra", "alarm off");
+
+                // also put an extra int into the alarm off section
+                // to prevent crashes in a Null Pointer Exception
+                my_intent.putExtra("whale_choice", alarmSound);
+
+
+                // stop the ringtone
+                //sendBroadcast(my_intent);
 
                 Intent intent = new Intent (MainActivity.this, SecondActivity.class);
                 startActivity(intent);
+
 
             }
 
@@ -129,31 +135,35 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         });
 
-        snooze();
+
+
+
     }
 
-    private void snooze() {
-
-        final Intent my_intent = new Intent(this.context, Alarm_Receiver.class);
-
-        // changing alarm indicator to off
-        updateIndicator("Alarm off!");
-
-        // cancel the pending intent for alarm
-        alarm_manager.cancel(pending_intent);
-
-        // put extra string into my_intent
-        // tells the clock that you pressed the "alarm off" button
-        my_intent.putExtra("extra", "alarm off");
-
-        // also put an extra int into the alarm off section
-        // to prevent crashes in a Null Pointer Exception
-        my_intent.putExtra("whale_choice", alarmSound);
-
-
-        // stop the ringtone
-        sendBroadcast(my_intent);
-    }
+//    private void snooze() {
+//
+//        final Intent my_intent = new Intent(this.context, Alarm_Receiver.class);
+//
+//        // changing alarm indicator to off
+//        updateIndicator("Alarm off!");
+//
+//        if (music) {
+//            //cancel the pending intent for alarm
+//            alarm_manager.cancel(pending_intent);
+//
+//            //put extra string into my_intent
+//            //tells the clock that you pressed the "alarm off" button
+//            my_intent.putExtra("extra", "alarm off");
+//
+//            //also put an extra int into the alarm off section
+//            //to prevent crashes in a Null Pointer Exception
+//            my_intent.putExtra("whale_choice", alarmSound);
+//
+//
+//            //stop the ringtone
+//            sendBroadcast(my_intent);
+//        }
+//    }
 
     private void updateIndicator(String str) {
         update_text.setText(str);
@@ -226,6 +236,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 }
             }
         }
+
+
 
 
 
