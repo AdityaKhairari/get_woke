@@ -244,12 +244,17 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
 
         // create an instance of a calendar
-        final Calendar calendar = Calendar.getInstance();
+        Calendar alarm = Calendar.getInstance();
+        // create calendar instance for current time
+        Calendar now = Calendar.getInstance();
 
 
 
-        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-        calendar.set(Calendar.MINUTE, minute);
+
+        alarm.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        alarm.set(Calendar.MINUTE, minute);
+
+        if (alarm.before(now)) alarm.add(Calendar.DAY_OF_MONTH, 1);
 
 
         // create an intent to the Alarm Receiver class
@@ -272,7 +277,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 my_intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // set the alarm manager
-        alarm_manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+        alarm_manager.set(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis(),
                 pending_intent);
 
 
