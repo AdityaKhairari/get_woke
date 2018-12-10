@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Get Woke</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="ringtones">
+        <item>Pick a sound!</item>
+        <item>Bright Idea</item>
+        <item>Christmas</item>
+        <item>Computer Bounce</item>
+        <item>Holiday</item>
+        <item>Marimba V1</item>
+        <item>Marimba V2</item>
+        <item>Work Hard</item>
+    </string-array>
+
+</resources>
