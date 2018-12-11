@@ -11,29 +11,30 @@ public class Alarm_Receiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
 
-        Log.e("in receiver now", "good job!");
+        Log.e("in receiver", "good job!");
 
         // fetch extra strings from the intent
         // tells the app whether the user pressed the alarm on button or the alarm off button
 
-        String get_your_string = intent.getExtras().getString("extra");
+        String string = intent.getExtras().getString("extra");
 
-        Log.e("What is the key? ", get_your_string);
+
 
         // fetch the extra longs from the intent
         // tells the app which value the user picked from the drop down menu/spinner
-        Integer get_your_whale_choice = intent.getExtras().getInt("whale_choice");
+        Integer alarm_int = intent.getExtras().getInt("whale_choice");
 
-        Log.e("The whale choice is ", get_your_whale_choice.toString());
+
 
         // create an intent to the ringtone service
         Intent service_intent = new Intent(context, RingtonePlayingService.class);
 
         // pass the extra string from Receiver to the Ringtone Playing Service
-        service_intent.putExtra("extra", get_your_string);
+        service_intent.putExtra("extra", string);
 
         // pass the extra integer from the Receiver to the Ringtone Playing Service
-        service_intent.putExtra("whale_choice", get_your_whale_choice);
+        service_intent.putExtra("whale_choice", alarm_int);
+
 
         // start the ringtone service
         context.startService(service_intent);

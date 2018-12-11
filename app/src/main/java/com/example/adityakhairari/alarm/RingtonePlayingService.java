@@ -39,8 +39,7 @@ public class RingtonePlayingService extends Service {
         // fetch the whale choice integer values
         Integer ringtonechosen = intent.getExtras().getInt("whale_choice");
 
-        Log.e("Ringtone extra is ", state);
-        Log.e("Whale choice is ", ringtonechosen.toString());
+
 
         // put the notification here, test it out
 
@@ -75,7 +74,6 @@ public class RingtonePlayingService extends Service {
                 break;
             case "alarm off":
                 startId = 0;
-                Log.e("Start ID is ", state);
                 break;
             default:
                 startId = 0;

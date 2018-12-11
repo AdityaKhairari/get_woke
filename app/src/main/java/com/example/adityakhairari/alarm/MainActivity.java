@@ -60,11 +60,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         updateIndicator("Alarm off!");
 
-        // create a calendar instance
-        final Calendar calendar = Calendar.getInstance();
 
         // create intent for Alarm Receiver
-        final Intent my_intent = new Intent(this.context, Alarm_Receiver.class);
+        final Intent intentOff = new Intent(this.context, Alarm_Receiver.class);
+
+
 
         // create spinner (dropdown) in the main UI
         Spinner spinner = (Spinner) findViewById(R.id.ringtone_picker);
@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         // Setting onclick listener to onItemSelected method
         spinner.setOnItemSelectedListener(this);
+
+
 
 
         //initialize alarm set button
@@ -115,11 +117,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
                     // put extra string into my_intent
                     // tells the clock that you pressed the "alarm off" button
-                    my_intent.putExtra("extra", "alarm off");
+                    intentOff.putExtra("extra", "alarm off");
 
                     // also put an extra int into the alarm off section
                     // to prevent crashes in a Null Pointer Exception
-                    my_intent.putExtra("whale_choice", alarmSound);
+                    intentOff.putExtra("whale_choice", alarmSound);
 
 
                     // stop the ringtone
@@ -254,23 +256,23 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
 
         // create an intent to the Alarm Receiver class
-        final Intent my_intent = new Intent(this.context, Alarm_Receiver.class);
+        final Intent intentOn = new Intent(this.context, Alarm_Receiver.class);
 
         updateIndicator("Alarm is set");
 
         // put in extra string into my_intent
         // tells the clock that you pressed the "alarm on" button
-        my_intent.putExtra("extra", "alarm on");
+        intentOn.putExtra("extra", "alarm on");
 
         // put in an extra int into my_intent
         // tells the clock that you want a certain value from the drop-down menu/spinner
-        my_intent.putExtra("whale_choice", alarmSound);
+        intentOn.putExtra("whale_choice", alarmSound);
 
 
 
         // create a pending intent that delays the intent
         pending_intent = PendingIntent.getBroadcast(MainActivity.this, 0,
-                my_intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                intentOn, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // set alarm manager according to pending intent
         alarm_manager.set(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis(),
