@@ -42,9 +42,9 @@ public class RingtonePlayingService extends Service {
 
 
 
-        // put the notification here, test it out
 
-        // notification
+
+
         // set up the notification service
         NotificationManager notify_manager = (NotificationManager)
                 getSystemService(NOTIFICATION_SERVICE);
@@ -82,7 +82,6 @@ public class RingtonePlayingService extends Service {
         }
 
 
-        // if else statements
 
         // if there is no music playing, and the user pressed "alarm on"
         // music should start playing
@@ -95,18 +94,15 @@ public class RingtonePlayingService extends Service {
             notify_manager.notify(0, notification_popup);
 
 
-
-            // play the whale sound depending on the passed whale choice id
-
             if (ringtonechosen == 0) {
-                // play a randomly picked audio file
+                // play a ringtone randomnly
 
                 int minNum = 1;
                 int maxNum = 7;
 
                 Random randomNum = new Random();
                 int spinNum = randomNum.nextInt(maxNum + minNum);
-                Log.e("random number is " , String.valueOf(spinNum));
+
 
 
                 if (spinNum == 1) {
@@ -208,37 +204,20 @@ public class RingtonePlayingService extends Service {
             this.startId = 0;
         }
 
-        // these are if the user presses random buttons
-        // just to bug-proof the app
 
         // if there is music playing and the user pressed "alarm on"
         // do nothing
-        else if (this.musPlay && startId == 1) {
-
-
-
-            this.musPlay = true;
+        else if (this.musPlay) {
             this.startId = 1;
-
         }
 
 
         // if there is no music playing, and the user pressed "alarm off"
         // do nothing
-        else if (!this.musPlay && startId == 0) {
-
-
-
-            this.musPlay = false;
-            this.startId = 0;
-
-        }
-
-        // bugproof else statement
         else {
-
-
+            this.startId = 0;
         }
+
         return START_NOT_STICKY;
     }
 

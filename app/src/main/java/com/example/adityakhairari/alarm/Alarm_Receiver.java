@@ -13,14 +13,14 @@ public class Alarm_Receiver extends BroadcastReceiver {
 
         Log.e("in receiver", "good job!");
 
-        // fetch extra strings from the intent
+        // fetch stringkey from the intent
         // tells the app whether the user pressed the alarm on button or the alarm off button
 
         String string = intent.getExtras().getString("stringkey");
 
 
 
-        // fetch the extra longs from the intent
+        // fetch the intkey from the intent
         // tells the app which value the user picked from the drop down menu/spinner
         Integer alarm_int = intent.getExtras().getInt("intkey");
 

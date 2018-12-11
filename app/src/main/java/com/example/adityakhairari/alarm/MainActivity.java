@@ -58,10 +58,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         //initialize alarm on/off indicator
         update_text = (TextView) findViewById(R.id.update_text);
 
+
+        //set update text to alarm off when app loads
         updateIndicator("Alarm off!");
 
 
-        // create intent for Alarm Receiver
+        // create intent for Alarm Receiver (for turning off sound)
         final Intent intentOff = new Intent(this.context, Alarm_Receiver.class);
 
 
@@ -73,13 +75,13 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.ringtones, android.R.layout.simple_spinner_item);
 
-        // Specify the layout to use when the list of choices appears
+        // Specify the dropdown layout
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // Apply the adapter to the spinner
+        // set adapter to the spinner
         spinner.setAdapter(adapter);
 
-        // Setting onclick listener to onItemSelected method
+        // Setting onclick listener for onItemSelected method
         spinner.setOnItemSelectedListener(this);
 
 
@@ -91,8 +93,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             @Override
             public void onClick(View v) {
                 if (setbool) {
+                    // if already an alarm is initialized
                     Toast.makeText(context, "Please disable the alarm first", Toast.LENGTH_SHORT).show();
                 } else {
+                    // timepicker pop up initialization
                     DialogFragment timePicker = new Timepickerfragment();
                     timePicker.show(getSupportFragmentManager(), "time picker");
                 }
@@ -124,8 +128,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                     intentOff.putExtra("intkey", alarmSound);
 
 
-                    // stop the ringtone
-                    //sendBroadcast(my_intent);
 
                     Calendar currcal = Calendar.getInstance();
                     int curhour = currcal.get(Calendar.HOUR_OF_DAY);
@@ -134,12 +136,14 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                     setbool = false;
 
                     if ((curhour == hr && curmin >= min) || (curhour == hr + 1 && curmin <= ((min + 15) % 60))) {
+                        // takes us to the second activity for quiz
                         Intent intent = new Intent (MainActivity.this, SecondActivity.class);
                         startActivity(intent);
                     }
 
 
                 } else {
+                    // trying to disable before setting an alarm
                     Toast.makeText(context, "Please set the alarm first", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -255,22 +259,23 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         if (alarm.before(now)) alarm.add(Calendar.DAY_OF_MONTH, 1);
 
 
-        // create an intent to the Alarm Receiver class
+        // create an intent to turn on sound going to Alarm Receiver class
         final Intent intentOn = new Intent(this.context, Alarm_Receiver.class);
 
+        // update indicator to alarm is set
         updateIndicator("Alarm is set");
 
-        // put in extra string into my_intent
-        // tells the clock that you pressed the "alarm on" button
+        // put in a stringkey into intent
+        // tells the alarm reciever that you pressed the "alarm on" button
         intentOn.putExtra("stringkey", "alarm on");
 
-        // put in an extra int into my_intent
-        // tells the clock that you want a certain value from the drop-down menu/spinner
+        // put in an intkey into intent
+        // tells the alarmreciever that user wants a certain song from spinner
         intentOn.putExtra("intkey", alarmSound);
 
 
 
-        // create a pending intent that delays the intent
+        // create pending intent that delays the intent
         pending_intent = PendingIntent.getBroadcast(MainActivity.this, 0,
                 intentOn, PendingIntent.FLAG_UPDATE_CURRENT);
 
