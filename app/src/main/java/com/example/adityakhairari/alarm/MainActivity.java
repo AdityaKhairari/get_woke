@@ -91,8 +91,13 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
             @Override
             public void onClick(View v) {
-                DialogFragment timePicker = new Timepickerfragment();
-                timePicker.show(getSupportFragmentManager(), "time picker");
+                if (setbool) {
+                    Toast.makeText(context, "Please disable the alarm first", Toast.LENGTH_SHORT).show();
+                } else {
+                    DialogFragment timePicker = new Timepickerfragment();
+                    timePicker.show(getSupportFragmentManager(), "time picker");
+                }
+
 
             }
         });
