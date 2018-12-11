@@ -35,11 +35,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     Context context;
     AlarmManager alarm_manager;
     TextView update_text;
-
     PendingIntent pending_intent;
-
     int alarmSound;
-
     boolean setbool;
     int hr;
     int min;
@@ -55,10 +52,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         this.context = this;
 
 
-        // initialize the alarm_manager
+        // initialize alarm_manager
         alarm_manager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-        //initialize the alarm on/off indicator
+        //initialize alarm on/off indicator
         update_text = (TextView) findViewById(R.id.update_text);
 
         updateIndicator("Alarm off!");
@@ -85,10 +82,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         // Setting onclick listener to onItemSelected method
         spinner.setOnItemSelectedListener(this);
 
+
+        //initialize alarm set button
         Button setAlarm = (Button) findViewById(R.id.setAlarm);
-
         setAlarm.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 if (setbool) {
@@ -97,18 +94,13 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                     DialogFragment timePicker = new Timepickerfragment();
                     timePicker.show(getSupportFragmentManager(), "time picker");
                 }
-
-
             }
         });
 
 
 
-        // initialize the stop button
+        // initialize the disable button
         Button alarm_off = (Button) findViewById(R.id.snooze);
-
-        // create an onClick listener to stop the alarm or undo an alarm set
-
         alarm_off.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -148,30 +140,18 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 } else {
                     Toast.makeText(context, "Please set the alarm first", Toast.LENGTH_SHORT).show();
                 }
-
-
-
-
-
             }
-
-
-
-
-
-
         });
-
-
-
-
     }
 
-//
 
+    // the update text function
     private void updateIndicator(String str) {
         update_text.setText(str);
     }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -179,6 +159,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -196,12 +179,18 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         return super.onOptionsItemSelected(item);
     }
 
+
+
+
+
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         setbool = true;
         hr = hourOfDay;
         min = minute;
+        // initialize the alarm textview
         TextView alarmTime = (TextView) findViewById(R.id.alarmtime);
+        //recognizing users timesettings and displaying alatime accordingly
         if (DateFormat.is24HourFormat(this)) {
             if (hourOfDay < 12) {
                 if (hourOfDay < 10 && minute < 10) {
@@ -248,17 +237,19 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
 
 
-        // create an instance of a calendar
+        // an instance of a calendar
         Calendar alarm = Calendar.getInstance();
-        // create calendar instance for current time
+        // calendar instance for current time
         Calendar now = Calendar.getInstance();
 
 
 
-
+        // setting alarm calendar instance to the time selected by user on time picker
         alarm.set(Calendar.HOUR_OF_DAY, hourOfDay);
         alarm.set(Calendar.MINUTE, minute);
 
+
+        // checking if alarm is set for next day
         if (alarm.before(now)) alarm.add(Calendar.DAY_OF_MONTH, 1);
 
 
@@ -274,19 +265,22 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         // put in an extra int into my_intent
         // tells the clock that you want a certain value from the drop-down menu/spinner
         my_intent.putExtra("whale_choice", alarmSound);
-        Log.e("The alarm number: " , String.valueOf(alarmSound));
+
+
 
         // create a pending intent that delays the intent
-        // until the specified calendar time
         pending_intent = PendingIntent.getBroadcast(MainActivity.this, 0,
                 my_intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        // set the alarm manager
+        // set alarm manager according to pending intent
         alarm_manager.set(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis(),
                 pending_intent);
 
 
     }
+
+
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -304,6 +298,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                     + " is selected as Alarm Ringtone", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
