@@ -19,6 +19,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -71,8 +74,15 @@ public class SecondActivity extends AppCompatActivity {
                 } else {
                     question.setText("WRONG");
                     //myRef.child("update").setValue(!bool);
-                    Intent secIntent = new Intent (SecondActivity.this, ThirdActivity.class);
-                    startActivity(secIntent);
+                    final Intent secIntent = new Intent (SecondActivity.this, ThirdActivity.class);
+                    new Timer().schedule(
+                            new TimerTask() {
+                                public void run() {
+                                    startActivity(secIntent);
+                                }
+                            },
+                            1000
+                    );
                 }
             }
         });
@@ -92,8 +102,15 @@ public class SecondActivity extends AppCompatActivity {
 
                 } else {
                     question.setText("WRONG");
-                    Intent secIntent = new Intent (SecondActivity.this, ThirdActivity.class);
-                    startActivity(secIntent);
+                    final Intent secIntent = new Intent (SecondActivity.this, ThirdActivity.class);
+                    new Timer().schedule(
+                            new TimerTask() {
+                                public void run() {
+                                    startActivity(secIntent);
+                                }
+                            },
+                            1000
+                    );
                 }
             }
         });
@@ -113,8 +130,15 @@ public class SecondActivity extends AppCompatActivity {
 
                 } else {
                     question.setText("WRONG");
-                    Intent secIntent = new Intent (SecondActivity.this, ThirdActivity.class);
-                    startActivity(secIntent);
+                    final Intent secIntent = new Intent (SecondActivity.this, ThirdActivity.class);
+                    new Timer().schedule(
+                            new TimerTask() {
+                                public void run() {
+                                    startActivity(secIntent);
+                                }
+                            },
+                            1000
+                    );
                 }
             }
         });
@@ -134,8 +158,16 @@ public class SecondActivity extends AppCompatActivity {
 
                 } else {
                     question.setText("WRONG");
-                    Intent secIntent = new Intent (SecondActivity.this, ThirdActivity.class);
-                    startActivity(secIntent);
+                    final Intent secIntent = new Intent (SecondActivity.this, ThirdActivity.class);
+                    new Timer().schedule(
+                            new TimerTask() {
+                                public void run() {
+                                    startActivity(secIntent);
+                                }
+                            },
+                            1000
+                    );
+
                 }
             }
         });
