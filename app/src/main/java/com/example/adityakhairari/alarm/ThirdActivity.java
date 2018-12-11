@@ -23,7 +23,7 @@ public class ThirdActivity extends AppCompatActivity implements SensorEventListe
 
     boolean running = false;
 
-    int counter = 3;
+    int counter = 11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
