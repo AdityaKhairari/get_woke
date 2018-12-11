@@ -67,10 +67,10 @@ public class ThirdActivity extends AppCompatActivity implements SensorEventListe
             tv_steps.setText(String.valueOf(counter));
             if (counter <= 0) {
 
-                final Intent my_intent = new Intent(this.context, Alarm_Receiver.class);
-                my_intent.putExtra("extra", "alarm off");
-                my_intent.putExtra("whale_choice", 2);
-                sendBroadcast(my_intent);
+                final Intent intentOff = new Intent(context, Alarm_Receiver.class);
+                intentOff.putExtra("stringkey", "alarm off");
+                intentOff.putExtra("intkey", 2);
+                sendBroadcast(intentOff);
 
                 Intent fourthintent = new Intent (ThirdActivity.this, MainActivity.class);
                 startActivity(fourthintent);

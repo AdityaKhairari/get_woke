@@ -17,10 +17,10 @@ import java.util.Random;
 
 public class RingtonePlayingService extends Service {
 
-    MediaPlayer media_song;
     int startId;
-    public boolean isRunning;
-    Context context;
+    MediaPlayer media_song;
+    public boolean musPlay;
+
 
 
     @Nullable
@@ -32,12 +32,13 @@ public class RingtonePlayingService extends Service {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.i("LocalService", "Received start id " + startId + ": " + intent);
+
 
         // fetch the extra string from the alarm on/alarm off values
-        String state = intent.getExtras().getString("extra");
+        String fetchkey = intent.getExtras().getString("stringkey");
+
         // fetch the whale choice integer values
-        Integer ringtonechosen = intent.getExtras().getInt("whale_choice");
+        Integer ringtonechosen = intent.getExtras().getInt("intkey");
 
 
 
@@ -67,8 +68,8 @@ public class RingtonePlayingService extends Service {
 
         // this converts the extra strings from the intent
         // to start IDs, values 0 or 1
-        assert state != null;
-        switch (state) {
+        assert fetchkey != null;
+        switch (fetchkey) {
             case "alarm on":
                 startId = 1;
                 break;
@@ -85,10 +86,9 @@ public class RingtonePlayingService extends Service {
 
         // if there is no music playing, and the user pressed "alarm on"
         // music should start playing
-        if (!this.isRunning && startId == 1) {
-            Log.e("there is no music, ", "and you want start");
+        if (!this.musPlay && startId == 1) {
 
-            this.isRunning = true;
+            this.musPlay = true;
             this.startId = 0;
 
             // set up the start command for the notification
@@ -194,60 +194,49 @@ public class RingtonePlayingService extends Service {
                 media_song.setLooping(true);
                 media_song.start();
             }
-
-
-
-
-
-
-
-
-
-
         }
 
         // if there is music playing, and the user pressed "alarm off"
         // music should stop playing
-        else if (this.isRunning && startId == 0) {
-
-            Log.e("there is music, ", "and you want end");
-
+        else if (this.musPlay && startId == 0) {
             // stop the ringtone
             media_song.stop();
+            //reset ringtone
             media_song.reset();
 
-            this.isRunning = false;
+            this.musPlay = false;
             this.startId = 0;
         }
 
         // these are if the user presses random buttons
         // just to bug-proof the app
-        // if there is no music playing, and the user pressed "alarm off"
-        // do nothing
-        else if (!this.isRunning && startId == 0) {
-
-            Log.e("there is no music, ", "and you want end");
-
-            this.isRunning = false;
-            this.startId = 0;
-
-        }
 
         // if there is music playing and the user pressed "alarm on"
         // do nothing
+        else if (this.musPlay && startId == 1) {
 
-        else if (this.isRunning && startId == 1) {
 
-            Log.e("there is music, ", "and you want start");
 
-            this.isRunning = true;
+            this.musPlay = true;
             this.startId = 1;
+
+        }
+
+
+        // if there is no music playing, and the user pressed "alarm off"
+        // do nothing
+        else if (!this.musPlay && startId == 0) {
+
+
+
+            this.musPlay = false;
+            this.startId = 0;
 
         }
 
         // bugproof else statement
         else {
-            Log.e("final_else ", "bugproofing else");
+
 
         }
         return START_NOT_STICKY;
@@ -260,7 +249,7 @@ public class RingtonePlayingService extends Service {
 
         super.onDestroy();
 
-        this.isRunning = false;
+        this.musPlay = false;
     }
 
 

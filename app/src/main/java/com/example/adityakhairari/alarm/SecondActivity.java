@@ -63,10 +63,10 @@ public class SecondActivity extends AppCompatActivity {
                 if (a.getText().equals(correctAnswer)) {
                     question.setText("CORRECT");
 
-                    final Intent my_intent = new Intent(context, Alarm_Receiver.class);
-                    my_intent.putExtra("extra", "alarm off");
-                    my_intent.putExtra("whale_choice", 2);
-                    sendBroadcast(my_intent);
+                    final Intent intentOff = new Intent(context, Alarm_Receiver.class);
+                    intentOff.putExtra("stringkey", "alarm off");
+                    intentOff.putExtra("intkey", 2);
+                    sendBroadcast(intentOff);
 
                     Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
                     startActivity(thirdintent);
@@ -92,10 +92,10 @@ public class SecondActivity extends AppCompatActivity {
                 if (b.getText().equals(correctAnswer)) {
                     question.setText("CORRECT");
 
-                    final Intent my_intent = new Intent(context, Alarm_Receiver.class);
-                    my_intent.putExtra("extra", "alarm off");
-                    my_intent.putExtra("whale_choice", 2);
-                    sendBroadcast(my_intent);
+                    final Intent intentOff = new Intent(context, Alarm_Receiver.class);
+                    intentOff.putExtra("stringkey", "alarm off");
+                    intentOff.putExtra("intkey", 2);
+                    sendBroadcast(intentOff);
 
                     Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
                     startActivity(thirdintent);
@@ -120,10 +120,10 @@ public class SecondActivity extends AppCompatActivity {
                 if (c.getText().equals(correctAnswer)) {
                     question.setText("CORRECT");
 
-                    final Intent my_intent = new Intent(context, Alarm_Receiver.class);
-                    my_intent.putExtra("extra", "alarm off");
-                    my_intent.putExtra("whale_choice", 2);
-                    sendBroadcast(my_intent);
+                    final Intent intentOff = new Intent(context, Alarm_Receiver.class);
+                    intentOff.putExtra("stringkey", "alarm off");
+                    intentOff.putExtra("intkey", 2);
+                    sendBroadcast(intentOff);
 
                     Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
                     startActivity(thirdintent);
@@ -148,10 +148,10 @@ public class SecondActivity extends AppCompatActivity {
                 if (d.getText().equals(correctAnswer)) {
                     question.setText("CORRECT");
 
-                    final Intent my_intent = new Intent(context, Alarm_Receiver.class);
-                    my_intent.putExtra("extra", "alarm off");
-                    my_intent.putExtra("whale_choice", 2);
-                    sendBroadcast(my_intent);
+                    final Intent intentOff = new Intent(context, Alarm_Receiver.class);
+                    intentOff.putExtra("stringkey", "alarm off");
+                    intentOff.putExtra("intkey", 2);
+                    sendBroadcast(intentOff);
 
                     Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
                     startActivity(thirdintent);

@@ -117,11 +117,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
                     // put extra string into my_intent
                     // tells the clock that you pressed the "alarm off" button
-                    intentOff.putExtra("extra", "alarm off");
+                    intentOff.putExtra("stringkey", "alarm off");
 
                     // also put an extra int into the alarm off section
                     // to prevent crashes in a Null Pointer Exception
-                    intentOff.putExtra("whale_choice", alarmSound);
+                    intentOff.putExtra("intkey", alarmSound);
 
 
                     // stop the ringtone
@@ -262,11 +262,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         // put in extra string into my_intent
         // tells the clock that you pressed the "alarm on" button
-        intentOn.putExtra("extra", "alarm on");
+        intentOn.putExtra("stringkey", "alarm on");
 
         // put in an extra int into my_intent
         // tells the clock that you want a certain value from the drop-down menu/spinner
-        intentOn.putExtra("whale_choice", alarmSound);
+        intentOn.putExtra("intkey", alarmSound);
 
 
 
