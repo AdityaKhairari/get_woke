@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     boolean setbool;
     int hr;
     int min;
-    Calendar now;
-    Calendar alarmtime;
+//    Calendar now;
+//    Calendar alarmtime;
 
 
 
@@ -138,10 +138,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
 
 
-//                    now = Calendar.getInstance();
+                    Calendar now = Calendar.getInstance();
+                    Calendar alarmtime = Calendar.getInstance();
 //
-//                    alarmtime.set(Calendar.HOUR_OF_DAY, hr);
-//                    alarmtime.set(Calendar.MINUTE, min);
+                    alarmtime.set(Calendar.HOUR_OF_DAY, hr);
+                    alarmtime.set(Calendar.MINUTE, min);
 
                     setbool = false;
 
@@ -174,6 +175,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Calendar now = Calendar.getInstance();
+        Calendar alarmtime = Calendar.getInstance();
+//
+        alarmtime.set(Calendar.HOUR_OF_DAY, hr);
+        alarmtime.set(Calendar.MINUTE, min);
+
         if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_MUTE) {
             if (setbool && (alarmtime.before(now) || alarmtime.equals(now))) {
                 setbool = false;
@@ -277,9 +284,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
 
         // an instance of a calendar
-        alarmtime = Calendar.getInstance();
+        Calendar alarmtime = Calendar.getInstance();
         // calendar instance for current time
-        now = Calendar.getInstance();
+        Calendar now = Calendar.getInstance();
 
 
 
