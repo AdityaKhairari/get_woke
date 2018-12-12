@@ -232,6 +232,12 @@ public class SecondActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
+
     public String getRandomQuestion() {
         Random rand = new Random();
         int n = rand.nextInt(numberOfQuestions) + 1;

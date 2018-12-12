@@ -79,6 +79,11 @@ public class ThirdActivity extends AppCompatActivity implements SensorEventListe
     }
 
     @Override
+    public void onBackPressed() {
+
+    }
+
+    @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
