@@ -8,6 +8,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -75,6 +76,20 @@ public class ThirdActivity extends AppCompatActivity implements SensorEventListe
                 Intent fourthintent = new Intent (ThirdActivity.this, MainActivity.class);
                 startActivity(fourthintent);
             }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_MUTE) {
+            return true;
+        } else {
+            return super.onKeyDown(keyCode, event);
         }
     }
 
