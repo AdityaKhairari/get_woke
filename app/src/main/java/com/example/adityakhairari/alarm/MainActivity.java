@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
 
         // create intent for Alarm Receiver (for turning off sound)
-        //final Intent intentOff = new Intent(this.context, Alarm_Receiver.class);
+        final Intent intentOff = new Intent(this.context, Alarm_Receiver.class);
 
 
 
@@ -130,11 +130,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
                     // put extra string into my_intent
                     // tells the clock that you pressed the "alarm off" button
-                    //intentOff.putExtra("stringkey", "alarm off");
+                    intentOff.putExtra("stringkey", "alarm off");
 
                     // also put an extra int into the alarm off section
                     // to prevent crashes in a Null Pointer Exception
-                    //intentOff.putExtra("intkey", alarmSound);
+                    intentOff.putExtra("intkey", alarmSound);
 
 
 
