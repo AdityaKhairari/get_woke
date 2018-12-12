@@ -144,6 +144,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                     alarmtime.set(Calendar.HOUR_OF_DAY, hr);
                     alarmtime.set(Calendar.MINUTE, min);
 
+                    if (alarmtime.before(now)) alarmtime.add(Calendar.DAY_OF_MONTH, 1);
+
                     setbool = false;
 
                     if (alarmtime.before(now) || alarmtime.equals(now)) {
@@ -180,6 +182,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 //
         alarmtime.set(Calendar.HOUR_OF_DAY, hr);
         alarmtime.set(Calendar.MINUTE, min);
+
+        if (alarmtime.before(now)) alarmtime.add(Calendar.DAY_OF_MONTH, 1);
 
         if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_MUTE) {
             if (setbool && (alarmtime.before(now) || alarmtime.equals(now))) {
