@@ -1,5 +1,6 @@
 package com.example.adityakhairari.alarm;
 
+import android.app.Application;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -41,8 +42,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     int hr;
     int min;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -50,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         setSupportActionBar(toolbar);
 
         this.context = this;
+
 
 
         // initialize alarm_manager
@@ -133,9 +139,13 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                     int curhour = currcal.get(Calendar.HOUR_OF_DAY);
                     int curmin = currcal.get(Calendar.MINUTE);
 
+                    Calendar alarmtime = Calendar.getInstance();
+                    alarmtime.set(Calendar.HOUR_OF_DAY, hr);
+                    alarmtime.set(Calendar.MINUTE, min);
+
                     setbool = false;
 
-                    if ((curhour == hr && curmin >= min) || (curhour == hr + 1 && curmin <= ((min + 15) % 60))) {
+                    if (alarmtime.before(currcal)) {
                         // takes us to the second activity for quiz
                         Intent intent = new Intent (MainActivity.this, SecondActivity.class);
                         startActivity(intent);
@@ -155,6 +165,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     private void updateIndicator(String str) {
         update_text.setText(str);
     }
+
+
+
 
 
 
@@ -192,8 +205,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         setbool = true;
-        hr = hourOfDay;
-        min = minute;
+
         // initialize the alarm textview
         TextView alarmTime = (TextView) findViewById(R.id.alarmtime);
         //recognizing users timesettings and displaying alatime accordingly
@@ -257,6 +269,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         // checking if alarm is set for next day
         if (alarm.before(now)) alarm.add(Calendar.DAY_OF_MONTH, 1);
+
+        hr = alarm.get(Calendar.HOUR_OF_DAY);
+        min = alarm.get(Calendar.MINUTE);
 
 
         // create an intent to turn on sound going to Alarm Receiver class
