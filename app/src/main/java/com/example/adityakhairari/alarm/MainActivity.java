@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     boolean setbool;
     int hr;
     int min;
+    Calendar now;
+    Calendar alarmtime;
 
 
 
@@ -70,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
 
         // create intent for Alarm Receiver (for turning off sound)
-        final Intent intentOff = new Intent(this.context, Alarm_Receiver.class);
+        //final Intent intentOff = new Intent(this.context, Alarm_Receiver.class);
 
 
 
@@ -127,25 +130,22 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
                     // put extra string into my_intent
                     // tells the clock that you pressed the "alarm off" button
-                    intentOff.putExtra("stringkey", "alarm off");
+                    //intentOff.putExtra("stringkey", "alarm off");
 
                     // also put an extra int into the alarm off section
                     // to prevent crashes in a Null Pointer Exception
-                    intentOff.putExtra("intkey", alarmSound);
+                    //intentOff.putExtra("intkey", alarmSound);
 
 
 
-                    Calendar currcal = Calendar.getInstance();
-                    int curhour = currcal.get(Calendar.HOUR_OF_DAY);
-                    int curmin = currcal.get(Calendar.MINUTE);
-
-                    Calendar alarmtime = Calendar.getInstance();
-                    alarmtime.set(Calendar.HOUR_OF_DAY, hr);
-                    alarmtime.set(Calendar.MINUTE, min);
+//                    now = Calendar.getInstance();
+//
+//                    alarmtime.set(Calendar.HOUR_OF_DAY, hr);
+//                    alarmtime.set(Calendar.MINUTE, min);
 
                     setbool = false;
 
-                    if (alarmtime.before(currcal)) {
+                    if (alarmtime.before(now)) {
                         // takes us to the second activity for quiz
                         Intent intent = new Intent (MainActivity.this, SecondActivity.class);
                         startActivity(intent);
@@ -171,7 +171,24 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     public void onBackPressed() {
 
     }
-    
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_MUTE) {
+            if (setbool && alarmtime.before(now)) {
+                setbool = false;
+                updateIndicator("Alarm off!");
+                alarm_manager.cancel(pending_intent);
+                Intent intent = new Intent (MainActivity.this, SecondActivity.class);
+                startActivity(intent);
+                return true;
+            } else {
+                return super.onKeyDown(keyCode, event);
+            }
+        } else {
+            return super.onKeyDown(keyCode, event);
+        }
+    }
 
 
 
@@ -260,22 +277,22 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
 
         // an instance of a calendar
-        Calendar alarm = Calendar.getInstance();
+        alarmtime = Calendar.getInstance();
         // calendar instance for current time
-        Calendar now = Calendar.getInstance();
+        now = Calendar.getInstance();
 
 
 
         // setting alarm calendar instance to the time selected by user on time picker
-        alarm.set(Calendar.HOUR_OF_DAY, hourOfDay);
-        alarm.set(Calendar.MINUTE, minute);
+        alarmtime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        alarmtime.set(Calendar.MINUTE, minute);
 
 
         // checking if alarm is set for next day
-        if (alarm.before(now)) alarm.add(Calendar.DAY_OF_MONTH, 1);
+        if (alarmtime.before(now)) alarmtime.add(Calendar.DAY_OF_MONTH, 1);
 
-        hr = alarm.get(Calendar.HOUR_OF_DAY);
-        min = alarm.get(Calendar.MINUTE);
+        hr = alarmtime.get(Calendar.HOUR_OF_DAY);
+        min = alarmtime.get(Calendar.MINUTE);
 
 
         // create an intent to turn on sound going to Alarm Receiver class
@@ -299,7 +316,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 intentOn, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // set alarm manager according to pending intent
-        alarm_manager.set(AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis(),
+        alarm_manager.set(AlarmManager.RTC_WAKEUP, alarmtime.getTimeInMillis(),
                 pending_intent);
 
 
