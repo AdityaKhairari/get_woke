@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
                     setbool = false;
 
-                    if (alarmtime.before(now)) {
+                    if (alarmtime.before(now) || alarmtime.equals(now)) {
                         // takes us to the second activity for quiz
                         Intent intent = new Intent (MainActivity.this, SecondActivity.class);
                         startActivity(intent);
@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_MUTE) {
-            if (setbool && alarmtime.before(now)) {
+            if (setbool && (alarmtime.before(now) || alarmtime.equals(now))) {
                 setbool = false;
                 updateIndicator("Alarm off!");
                 alarm_manager.cancel(pending_intent);
