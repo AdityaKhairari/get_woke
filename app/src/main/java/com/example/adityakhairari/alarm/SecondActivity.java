@@ -35,7 +35,7 @@ public class SecondActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
     private String currentQuestion;
     private String correctAnswer;
-    private int numberOfQuestions = 6;
+    private int numberOfQuestions = 7;
     private  boolean bool = true;
 
 
