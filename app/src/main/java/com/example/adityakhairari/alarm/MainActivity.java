@@ -2,6 +2,7 @@ package com.example.adityakhairari.alarm;
 
 import android.app.Application;
 import android.app.TimePickerDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -42,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     boolean setbool;
     int hr;
     int min;
-//    Calendar now;
-//    Calendar alarmtime;
+    Calendar now;
+    Calendar alarmtime;
 
 
 
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
 
         // create intent for Alarm Receiver (for turning off sound)
-        //final Intent intentOff = new Intent(this.context, Alarm_Receiver.class);
+        final Intent intentOff = new Intent(this.context, Alarm_Receiver.class);
 
 
 
@@ -130,21 +131,18 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
                     // put extra string into my_intent
                     // tells the clock that you pressed the "alarm off" button
-                    //intentOff.putExtra("stringkey", "alarm off");
+                    intentOff.putExtra("stringkey", "alarm off");
 
                     // also put an extra int into the alarm off section
                     // to prevent crashes in a Null Pointer Exception
-                    //intentOff.putExtra("intkey", alarmSound);
+                    intentOff.putExtra("intkey", alarmSound);
 
 
 
-                    Calendar now = Calendar.getInstance();
-                    Calendar alarmtime = Calendar.getInstance();
+//                    now = Calendar.getInstance();
 //
-                    alarmtime.set(Calendar.HOUR_OF_DAY, hr);
-                    alarmtime.set(Calendar.MINUTE, min);
-
-                    if (alarmtime.before(now)) alarmtime.add(Calendar.DAY_OF_MONTH, 1);
+//                    alarmtime.set(Calendar.HOUR_OF_DAY, hr);
+//                    alarmtime.set(Calendar.MINUTE, min);
 
                     setbool = false;
 
@@ -177,14 +175,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        Calendar now = Calendar.getInstance();
-        Calendar alarmtime = Calendar.getInstance();
-//
-        alarmtime.set(Calendar.HOUR_OF_DAY, hr);
-        alarmtime.set(Calendar.MINUTE, min);
-
-        if (alarmtime.before(now)) alarmtime.add(Calendar.DAY_OF_MONTH, 1);
-
         if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_MUTE) {
             if (setbool && (alarmtime.before(now) || alarmtime.equals(now))) {
                 setbool = false;
@@ -288,9 +278,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
 
         // an instance of a calendar
-        Calendar alarmtime = Calendar.getInstance();
+        alarmtime = Calendar.getInstance();
         // calendar instance for current time
-        Calendar now = Calendar.getInstance();
+        now = Calendar.getInstance();
 
 
 
@@ -351,6 +341,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             Toast.makeText(parent.getContext(), parent.getItemAtPosition(position).toString()
                     + " is selected as Alarm Ringtone", Toast.LENGTH_SHORT).show();
         }
+        ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
+        ((TextView) parent.getChildAt(0)).setTextSize(20);
     }
 
 

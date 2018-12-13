@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_main"
     android:background="@drawable/backgroundnight"
-    tools:context=".MainActivity">
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
 
     <Button
         android:id="@+id/setAlarm"
@@ -23,11 +24,11 @@
         android:background="@drawable/ripple"
         android:clickable="true"
         android:focusable="true"
+        android:fontFamily="@font/alef"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
         android:text="Set Alarm"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:fontFamily="@font/alef"
         android:textColor="#E6F7FF"
         android:textSize="25sp"
         android:textStyle="bold" />
@@ -44,11 +45,11 @@
         android:background="@drawable/ripple"
         android:clickable="true"
         android:focusable="true"
+        android:fontFamily="@font/alef"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
         android:text="Disable"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:fontFamily="@font/alef"
         android:textColor="#E6F7FF"
         android:textSize="25sp"
         android:textStyle="bold" />
@@ -60,11 +61,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="100dp"
+        android:fontFamily="@font/alef"
         android:text="Alarm on/off Indicator"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:fontFamily="@font/alef"
-        android:textSize="25sp"
-        android:textColor="#E6F7FF"/>
+        android:textColor="#E6F7FF"
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/alarmtime"
@@ -81,12 +82,13 @@
 
     <Spinner
         android:id="@+id/ringtone_picker"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/setAlarm"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="126dp" />
-
+        android:layout_marginTop="125dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp" />
 
 
 </RelativeLayout>

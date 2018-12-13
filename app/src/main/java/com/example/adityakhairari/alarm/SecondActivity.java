@@ -69,8 +69,16 @@ public class SecondActivity extends AppCompatActivity {
                     intentOff.putExtra("intkey", 2);
                     sendBroadcast(intentOff);
 
-                    Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
-                    startActivity(thirdintent);
+                    final Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
+                    new Timer().schedule(
+                            new TimerTask() {
+                                public void run() {
+                                    startActivity(thirdintent);
+                                }
+                            },
+                            800
+                    );
+
 
                 } else {
                     question.setText("WRONG");
@@ -82,7 +90,7 @@ public class SecondActivity extends AppCompatActivity {
                                     startActivity(secIntent);
                                 }
                             },
-                            1000
+                            800
                     );
                 }
             }
@@ -98,8 +106,15 @@ public class SecondActivity extends AppCompatActivity {
                     intentOff.putExtra("intkey", 2);
                     sendBroadcast(intentOff);
 
-                    Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
-                    startActivity(thirdintent);
+                    final Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
+                    new Timer().schedule(
+                            new TimerTask() {
+                                public void run() {
+                                    startActivity(thirdintent);
+                                }
+                            },
+                            800
+                    );
 
                 } else {
                     question.setText("WRONG");
@@ -110,7 +125,7 @@ public class SecondActivity extends AppCompatActivity {
                                     startActivity(secIntent);
                                 }
                             },
-                            1000
+                            800
                     );
                 }
             }
@@ -126,8 +141,15 @@ public class SecondActivity extends AppCompatActivity {
                     intentOff.putExtra("intkey", 2);
                     sendBroadcast(intentOff);
 
-                    Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
-                    startActivity(thirdintent);
+                    final Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
+                    new Timer().schedule(
+                            new TimerTask() {
+                                public void run() {
+                                    startActivity(thirdintent);
+                                }
+                            },
+                            800
+                    );
 
                 } else {
                     question.setText("WRONG");
@@ -138,7 +160,7 @@ public class SecondActivity extends AppCompatActivity {
                                     startActivity(secIntent);
                                 }
                             },
-                            1000
+                            800
                     );
                 }
             }
@@ -154,8 +176,15 @@ public class SecondActivity extends AppCompatActivity {
                     intentOff.putExtra("intkey", 2);
                     sendBroadcast(intentOff);
 
-                    Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
-                    startActivity(thirdintent);
+                    final Intent thirdintent = new Intent (SecondActivity.this, MainActivity.class);
+                    new Timer().schedule(
+                            new TimerTask() {
+                                public void run() {
+                                    startActivity(thirdintent);
+                                }
+                            },
+                            800
+                    );
 
                 } else {
                     question.setText("WRONG");
@@ -166,7 +195,7 @@ public class SecondActivity extends AppCompatActivity {
                                     startActivity(secIntent);
                                 }
                             },
-                            1000
+                            800
                     );
 
                 }
