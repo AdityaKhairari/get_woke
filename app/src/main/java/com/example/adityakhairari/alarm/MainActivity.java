@@ -123,6 +123,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             public void onClick(View v) {
 
                 if (setbool) {
+
+                    now = Calendar.getInstance();
+
                     // changing alarm indicator to off
                     updateIndicator("Alarm off!");
 
@@ -175,6 +178,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        now = Calendar.getInstance();
         if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_MUTE) {
             if (setbool && (alarmtime.before(now) || alarmtime.equals(now))) {
                 setbool = false;
@@ -227,7 +231,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         setbool = true;
-
+        // calendar instance for current time
+        now = Calendar.getInstance();
         // initialize the alarm textview
         TextView alarmTime = (TextView) findViewById(R.id.alarmtime);
         //recognizing users timesettings and displaying alatime accordingly
@@ -279,11 +284,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         // an instance of a calendar
         alarmtime = Calendar.getInstance();
-        // calendar instance for current time
-        now = Calendar.getInstance();
-
-
-
         // setting alarm calendar instance to the time selected by user on time picker
         alarmtime.set(Calendar.HOUR_OF_DAY, hourOfDay);
         alarmtime.set(Calendar.MINUTE, minute);
